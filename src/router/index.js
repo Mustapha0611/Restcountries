@@ -11,7 +11,7 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about-country',
+    path: '/country/:name',
     name: 'about',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route

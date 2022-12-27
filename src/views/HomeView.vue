@@ -37,9 +37,9 @@
           </select>
         </div>
       </div>
-      <div class="items">
+      <div class="items" v-if="loader == false">
         <div v-for="country in filteredcountries" :key="country.id" class="item" :class="{itemlight:lightMode}">
-          <router-link v-bind:to="{name:'about', params:{id:country.id}}"><img :src="country.flags.png" alt="" srcset=""></router-link>
+          <router-link v-bind:to="{name:'about', params:{name:country.name}}"><img :src="country.flags.png" alt="" srcset=""></router-link>
           <section class="more-info"  :class="{moreinfolight:lightMode}" >
             <p class="country-name"  :class="{moreinfolight:lightMode}">{{country.name}}</p>
             <p><span :class="{moreinfolight:lightMode}">Population: {{country.population}}</span></p>
@@ -47,6 +47,9 @@
             <p><span :class="{moreinfolight:lightMode}">Capital: {{country.capital}}</span></p>
           </section>
         </div>
+      </div>
+      <div class="loader" v-if="loader">
+        <div class="loading"></div>
       </div>
     </main>
   </div>
@@ -62,13 +65,15 @@ export default {
       lightMode: false,
       search:'',
       byRegion:'',
-      countries:[]
+      countries:[],
+      loader:true
     };
   },
   mounted(){
     axios.get('https://restcountries.com/v2/all')
     .then(resp=>{
       this.countries = resp.data
+      this.loader = false
     })
   },
   computed:{
@@ -100,8 +105,11 @@ header {
   padding: 0 5%;
   align-items: center;
   color: hsl(0, 0%, 100%);
-  box-shadow: 0px 5px 5px hsl(0, 100%, 4%);
+  box-shadow: 4px 5px 5px 5px hsl(0, 100%, 4%);
   transition: all .3s;
+}
+h2{
+  font-size:24px;
 }
 .headerWhite{
   background-color: hsl(0, 0%, 98%);
@@ -127,6 +135,7 @@ header {
 }
 .container {
   height:auto;
+  min-height: calc(100vh - 90px);
   background-color: hsl(207, 26%, 17%);
   transition: all .3s;
 }
@@ -213,4 +222,57 @@ label {
   font-weight: 600;
   margin: 20px 0;
  }
+ .loader{
+  width:90%;
+  height: 78vh;
+  margin:0 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid white; */
+}
+.loading{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background-color: hsl(0, 0%, 93%);
+  animation: bounce .5s cubic-bezier(.19,.57,.3,.98) infinite alternate;
+}
+@keyframes bounce{
+  from{
+    transform: translateY(0);
+  }
+  to{
+    transform: translateY(-100px);
+    background-color: rgb(2, 33, 153);
+  }
+}
+@media screen and (max-width:1000px) {
+  .input-text{
+    width:400px;
+  }
+  .select{
+    width:150px;
+  }
+  .items{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width:720px){
+  h2{
+    font-size: 18px;
+  }
+  .inputs{
+  flex-direction: column;
+}
+  .input-text{
+    width:340px;
+  }
+  .filter{
+    margin:10px 7%;
+  }
+  .items{
+    grid-template-columns: 1fr;
+  }
+}
 </style>
