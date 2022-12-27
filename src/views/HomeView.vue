@@ -266,7 +266,8 @@ label {
   flex-direction: column;
 }
   .input-text{
-    width:340px;
+    width:300px;
+    margin-left: 6%;
   }
   .filter{
     margin:10px 7%;
