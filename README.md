@@ -4,16 +4,10 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 
 ## Table of contents
 
-- [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
   - [Links](#links)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
-## Overview
 
 ### The challenge
 
@@ -27,12 +21,12 @@ Users can be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./src/assets/desktop-design-home-dark.jpg)
 
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Live site](https://musteey-restcountries.netlify.app/)
 
 ## My process
 Started from the header down to other sections and in future projects I plan on building them in diff component
