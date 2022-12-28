@@ -27,7 +27,7 @@
           </label>
         </div>
         <div class="filter">
-          <select v-model="byRegion" name="region" class="select">
+          <select v-model="byRegion" name="region" class="select" :class="{selectlight:lightMode}" >
             <option value="" >Filter by Region</option>
             <option value="Africa">Africa</option>
             <option value="America">America</option>
@@ -190,7 +190,11 @@ label {
   color: hsl(0, 0%, 100%);
   background-color: hsl(209, 23%, 22%);
 }
-
+.selectlight{
+  background-color: hsl(0, 0%, 100%);
+  color:hsl(200, 15%, 8%);
+  box-shadow: 1px 2px 3px grey;
+}
 .items{
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

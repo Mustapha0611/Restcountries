@@ -132,7 +132,7 @@ header {
   height:50px;
   text-decoration: none;
   background-color: hsl(209, 23%, 22%);
-  box-shadow: 2px 2px 2px 2px hsl(212, 79%, 13%);
+  box-shadow: 1px 2px 3px hsl(212, 79%, 13%);
   border-radius:5px;
 }
 .lightlink{
